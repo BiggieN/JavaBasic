@@ -1,6 +1,5 @@
 package JavaBasic.Lesson_1;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
