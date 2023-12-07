@@ -1,0 +1,2 @@
+дек. 07, 2023 11:36:37 PM JavaBasic.Lesson_9.main writeInFile
+INFO: Zapis proshla uspeshno
