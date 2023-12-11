@@ -6,43 +6,45 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.*;
 
-class BubbleSort {
-
+class BubbleSort {  
+    // создаем файл
     public static void sort(int[] mas){
-      try (FileWriter fileWriter = new FileWriter("log.txt",true)){
-        
-        for (int i = mas.length; i > 0; i--)
-        {
-            for (int j = 1; j < i; j++)
-            {
-                if (mas[j] < mas[j-1]){
-                    int temp = mas[j];
-                    mas[j] = mas[j-1];
-                    mas[j-1] = temp;
+      try {
+            File log = new File("log.txt");
+            log.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+      
+      // отпределяем текущие дату и время
+      Date dateNow = new Date();
+      SimpleDateFormat formatForDateNow = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+      
+      // сортируем пузырьком
+      for (int i = 0; i < mas.length - 1; i++) {
+            for(int j = 0; j < mas.length - i - 1; j++) {
+            if(mas[j + 1] < mas[j]) {
+                int swap = mas[j];
+                mas[j] = mas[j + 1];
+                mas[j + 1] = swap;
                 }
             }
-            StringBuilder log = new StringBuilder();
-
-            String now = new SimpleDateFormat("YYYY-MM-dd HH:mm ").format(Calendar.getInstance().getTime());
-            log.append(now);
-            log.append("[");
-          log.append(mas[0] + ", ");
-            for(int k = 1; k < mas.length-1; k++){
-                log.append(mas[k] + ", ");
-            }
-            log.append(mas[mas.length-1]+"]");
-             
-            fileWriter.write(log.toString()+"\n");
+                String text1 = formatForDateNow.format(dateNow);
+                String text2 = Arrays.toString(mas);
+                String text3 = (text1 + " " + text2 + "\n");
+                try {
+                  FileWriter writer = new FileWriter("log.txt", true);
+                  writer.write(text3);
+                  writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                  }
         }
-      }
-      catch (IOException e){
-        boolean buuged = true;
-      }
-  }
+    }
 }
 
 // Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
@@ -71,5 +73,8 @@ public class main{
         } catch (IOException e) {
             e.printStackTrace();
         }
+      File file = new File("log.txt");
+
+file.delete();
     }
 }

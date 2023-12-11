@@ -33,9 +33,9 @@ public class main{
 
         if (args.length == 0) {
         // При отправке кода на Выполнение, вы можете варьировать эти параметры
-            a = 15;
-            op = '/';
-            b = 5;
+            a = 3;
+            op = '+';
+            b = 7;
         } else {
             a = Integer.parseInt(args[0]);
             op = args[1].charAt(0);
