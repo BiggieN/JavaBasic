@@ -41,7 +41,7 @@ class PhoneBook {
 
     public static HashMap<String, ArrayList<Integer>> getPhoneBook() {
 // Введите свое решение ниже
-        System.out.println(phoneBook);
+        return phoneBook;
     }
 }
 // Не удаляйте этот класс - он нужен для 

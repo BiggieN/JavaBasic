@@ -22,12 +22,45 @@ import java.util.Arrays;
 
 class HeapSort {
     public static void buildTree(int[] tree, int sortLength) {
-           // Введите свое решение ниже
-        
+        // Построение кучи (Heap)
+        for (int i = sortLength / 2 - 1; i >= 0; i--) {
+            heapify(tree, sortLength, i);
+        }
     }
 
     public static void heapSort(int[] sortArray, int sortLength) {
-// Введите свое решение ниже
+        buildTree(sortArray, sortLength);
+
+        // Извлечение элементов из кучи по одному и формирование отсортированного массива
+        for (int i = sortLength - 1; i > 0; i--) {
+            int temp = sortArray[0];
+            sortArray[0] = sortArray[i];
+            sortArray[i] = temp;
+
+            heapify(sortArray, i, 0);
+        }
+    }
+
+    private static void heapify(int[] arr, int n, int i) {
+        int largest = i;
+        int l = 2 * i + 1;
+        int r = 2 * i + 2;
+
+        if (l < n && arr[i] < arr[l]) {
+            largest = l;
+        }
+
+        if (r < n && arr[largest] < arr[r]) {
+            largest = r;
+        }
+
+        if (largest != i) {
+            int temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+
+            heapify(arr, n, largest);
+        }
     }
 }
 
