@@ -1,6 +1,7 @@
+package JavaBasic.Homework51;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /*
  * Напишите программу, представляющую телефонную книгу. Программа должна иметь следующие функции:
